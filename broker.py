@@ -30,10 +30,35 @@ def catalog():
             "id": "service-1234",
             "description": "Ein Dummy-Service für Tests",
             "bindable": False,
+            "metadata": {
+                "displayName": "Dummy Service",
+                "imageUrl": "https://example.com/logo.png",
+                "longDescription": "Ein rein fiktiver OSB-Service für Tests mit der GeoPlattform",
+                "providerDisplayName": "R. Freymann",
+                "documentationUrl": "https://example.com/docs",
+                "supportUrl": "https://example.com/support"
+            },
             "plans": [{
                 "name": "default",
                 "id": "plan-0001",
-                "description": "Standardplan"
+                "description": "Standardplan",
+                "metadata": {
+                    "displayName": "Standard"
+                }},
+                {
+                "name": "groß",
+                "id": "plan-0002",
+                "description": "großer Plan",
+                "metadata": {
+                    "displayName": "groß"
+                }},
+                {
+                "name": "Jamba Spar-Abo",
+                "id": "plan-0001",
+                "description": "Spar-Abo",
+                "metadata": {
+                    "displayName": "Spar-Abo"
+                }
             }]
         }]
     })
