@@ -36,7 +36,8 @@ def catalog():
                 "longDescription": "Ein rein fiktiver OSB-Service für Tests mit der GeoPlattform",
                 "providerDisplayName": "R. Freymann",
                 "documentationUrl": "https://example.com/docs",
-                "supportUrl": "https://example.com/support"
+                "supportUrl": "https://example.com/support",
+                "eulaUrl": "https://example.com/eula"
             },
             "plans": [{
                 "name": "default",
