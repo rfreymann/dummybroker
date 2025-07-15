@@ -54,7 +54,7 @@ def catalog():
                 }},
                 {
                 "name": "Jamba Spar-Abo",
-                "id": "plan-0001",
+                "id": "plan-0003",
                 "description": "Spar-Abo",
                 "metadata": {
                     "displayName": "Spar-Abo"
