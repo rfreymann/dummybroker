@@ -1,5 +1,6 @@
 # catalog_data.py
-from schemas import create_instance_schema, create_instance_ui
+from schemas.create_instance_schema import create_instance_schema
+from schemas.create_instance_ui import create_instance_ui
 
 # create_instance_schema = {
 #     "$schema": "http://json-schema.org/draft-07/schema",
