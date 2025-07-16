@@ -31,25 +31,23 @@ def catalog():
                     "properties": {
                         "frei1": {
                             "type": "string",
-                            "title": "Kartennummer",
                             "description": "Nummer der Kreditkarte, alle Dienstleister werden akzeptiert"
                         },
                         "frei2": {
                             "type": "string",
-                            "title": "Ablaufdatum",
-                            "description": "Form MM/JJ"
+                            "description": "Ablaufdatum im Format MM/JJ"
                         },
                         "frei3": {
                             "type": "string",
-                            "title": "CVC",
-                            "description": "Sicherheitscode der Kreditkarte"
+                            "description": "Sicherheitscode (CVC) der Kreditkarte"
                         },
                         "frei4": {
                             "type": "string",
-                            "title": "Name des Karteninhabers",
-                            "description": "Name, wie auf der Kreditkarte angegeben"
+                            "description": "Name wie auf der Karte"
                         }
-                    }
+                    },
+                    "required": ["frei1", "frei2", "frei3, frei4"],
+                    "additionalProperties": False
                 }
             }
         }
