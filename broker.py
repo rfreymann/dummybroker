@@ -54,7 +54,7 @@ def catalog():
                     "displayName": "groß"
                 }},
                 {
-                "name": "Jamba Spar-Abo",
+                "name": "Spar-Abo",
                 "id": "plan-0003",
                 "description": "Spar-Abo",
                 "metadata": {
@@ -63,6 +63,26 @@ def catalog():
             }]
         }]
     })
+
+@app.route('/v2/service_instances/<instance_id>/service_bindings/<binding_id>', methods=['PUT', 'DELETE'])
+@requires_auth
+def service_binding(instance_id, binding_id):
+    if request.method == 'PUT':
+        print(f"[Broker] Binde Service {instance_id}, Binding {binding_id}")
+        return jsonify({
+            "credentials": {
+                "url": f"https://dummy-{instance_id}.rafrey.com/api",
+                "token": f"token-{binding_id}",
+                "username": "demo",
+                "password": "demo123",
+                "notes": "Dies ist ein reines Dummy-Binding ohne echte Funktion."
+            }
+        }), 201
+
+    elif request.method == 'DELETE':
+        print(f"[Broker] Entferne Binding {binding_id} von Instance {instance_id}")
+        return jsonify({}), 200
+
 
 # /v2/service_instances/<id>
 @app.route('/v2/service_instances/<instance_id>', methods=['PUT', 'DELETE'])
