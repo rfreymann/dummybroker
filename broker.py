@@ -20,10 +20,41 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
-# /v2/catalog
 @app.route('/v2/catalog', methods=['GET'])
 @requires_auth
 def catalog():
+    common_schemas = {
+        "service_instance": {
+            "create": {
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "frei1": {
+                            "type": "string",
+                            "title": "Kartennummer",
+                            "description": "Nummer der Kreditkarte, alle Dienstleister werden akzeptiert"
+                        },
+                        "frei2": {
+                            "type": "string",
+                            "title": "Ablaufdatum",
+                            "description": "Form MM/JJ"
+                        },
+                        "frei3": {
+                            "type": "string",
+                            "title": "CVC",
+                            "description": "Sicherheitscode der Kreditkarte"
+                        },
+                        "frei4": {
+                            "type": "string",
+                            "title": "Name des Karteninhabers",
+                            "description": "Name, wie auf der Kreditkarte angegeben"
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     return jsonify({
         "services": [{
             "name": "dummy-service",
@@ -33,36 +64,44 @@ def catalog():
             "metadata": {
                 "displayName": "Dummy Service",
                 "imageUrl": "https://example.com/logo.png",
-                "longDescription": "Ein rein fiktiver OSB-Service für Tests mit der GeoPlattform",
+                "longDescription": "Ein OSB für Tests mit der GeoPlattform",
                 "providerDisplayName": "R. Freymann",
                 "documentationUrl": "https://example.com/docs",
                 "supportUrl": "https://example.com/support",
                 "eulaUrl": "https://example.com/eula"
             },
-            "plans": [{
-                "name": "default",
-                "id": "plan-0001",
-                "description": "Standardplan",
-                "metadata": {
-                    "displayName": "Standard"
-                }},
+            "plans": [
                 {
-                "name": "groß",
-                "id": "plan-0002",
-                "description": "großer Plan",
-                "metadata": {
-                    "displayName": "groß"
-                }},
+                    "name": "default",
+                    "id": "plan-0001",
+                    "description": "Standardplan",
+                    "metadata": {
+                        "displayName": "Standard"
+                    },
+                    "schemas": common_schemas
+                },
                 {
-                "name": "Spar-Abo",
-                "id": "plan-0003",
-                "description": "Spar-Abo",
-                "metadata": {
-                    "displayName": "Spar-Abo"
+                    "name": "groß",
+                    "id": "plan-0002",
+                    "description": "großer Plan",
+                    "metadata": {
+                        "displayName": "groß"
+                    },
+                    "schemas": common_schemas
+                },
+                {
+                    "name": "Spar-Abo",
+                    "id": "plan-0003",
+                    "description": "Spar-Abo",
+                    "metadata": {
+                        "displayName": "Spar-Abo"
+                    },
+                    "schemas": common_schemas
                 }
-            }]
+            ]
         }]
     })
+
 
 @app.route('/v2/service_instances/<instance_id>/service_bindings/<binding_id>', methods=['PUT', 'DELETE'])
 @requires_auth
