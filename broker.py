@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from functools import wraps
 import os
 from catalog_data import catalog
+from schemas import create_instance_schema, create_instance_ui
 
 app = Flask(__name__)
 

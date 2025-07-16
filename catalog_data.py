@@ -1,30 +1,31 @@
 # catalog_data.py
+from schemas import create_instance_schema, create_instance_ui
 
-create_instance_schema = {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "title": "Kreditkarteninformationen",
-    "type": "object",
-    "properties": {
-        "frei1": {
-            "type": "string",
-            "description": "Nummer der Kreditkarte, alle Dienstleister werden akzeptiert"
-        },
-        "frei2": {
-            "type": "string",
-            "description": "Ablaufdatum im Format MM/JJ"
-        },
-        "frei3": {
-            "type": "string",
-            "description": "Sicherheitscode (CVC) der Kreditkarte"
-        },
-        "frei4": {
-            "type": "string",
-            "description": "Name wie auf der Karte"
-        }
-    },
-    "required": ["frei1", "frei2", "frei3"],
-    "additionalProperties": False
-}
+# create_instance_schema = {
+#     "$schema": "http://json-schema.org/draft-07/schema",
+#     "title": "Kreditkarteninformationen",
+#     "type": "object",
+#     "properties": {
+#         "frei1": {
+#             "type": "string",
+#             "description": "Nummer der Kreditkarte, alle Dienstleister werden akzeptiert"
+#         },
+#         "frei2": {
+#             "type": "string",
+#             "description": "Ablaufdatum im Format MM/JJ"
+#         },
+#         "frei3": {
+#             "type": "string",
+#             "description": "Sicherheitscode (CVC) der Kreditkarte"
+#         },
+#         "frei4": {
+#             "type": "string",
+#             "description": "Name wie auf der Karte"
+#         }
+#     },
+#     "required": ["frei1", "frei2", "frei3"],
+#     "additionalProperties": False
+# }
 
 plans = [
     {
@@ -33,13 +34,6 @@ plans = [
         "description": "Standardplan",
         "metadata": {
             "displayName": "Standard"
-        },
-        "schemas": {
-            "service_instance": {
-                "create": {
-                    "parameters": create_instance_schema
-                }
-            }
         }
     },
     {
@@ -47,7 +41,8 @@ plans = [
         "id": "plan-0002",
         "description": "großer Plan",
         "metadata": {
-            "displayName": "groß"
+            "displayName": "groß",
+            "service_instance_create_ui": create_instance_ui
         },
         "schemas": {
             "service_instance": {
@@ -62,7 +57,8 @@ plans = [
         "id": "plan-0003",
         "description": "Spar-Abo",
         "metadata": {
-            "displayName": "Spar-Abo"
+            "displayName": "Spar-Abo",
+            "service_instance_create_ui": create_instance_ui
         },
         "schemas": {
             "service_instance": {
