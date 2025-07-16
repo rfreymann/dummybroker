@@ -75,8 +75,7 @@ def catalog():
                     "description": "Standardplan",
                     "metadata": {
                         "displayName": "Standard"
-                    },
-                    "schemas": common_schemas
+                    }
                 },
                 {
                     "name": "groß",
