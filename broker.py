@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from functools import wraps
 import os
+from catalog_data import catalog
 
 app = Flask(__name__)
 
@@ -22,83 +23,8 @@ def requires_auth(f):
 
 @app.route('/v2/catalog', methods=['GET'])
 @requires_auth
-def catalog():
-    common_schemas = {
-        "service_instance": {
-            "create": {
-                "parameters": {
-                    "type": "object",
-                    "properties": {
-                        "frei1": {
-                            "type": "string",
-                            "description": "Nummer der Kreditkarte, alle Dienstleister werden akzeptiert"
-                        },
-                        "frei2": {
-                            "type": "string",
-                            "description": "Ablaufdatum im Format MM/JJ"
-                        },
-                        "frei3": {
-                            "type": "string",
-                            "description": "Sicherheitscode (CVC) der Kreditkarte"
-                        },
-                        "frei4": {
-                            "type": "string",
-                            "description": "Name wie auf der Karte"
-                        }
-                    },
-                    "required": ["frei1", "frei2", "frei3, frei4"],
-                    "additionalProperties": False
-                }
-            }
-        }
-    }
-
-    return jsonify({
-        "services": [{
-            "name": "dummy-service",
-            "id": "service-1234",
-            "description": "Ein Dummy-Service für Tests",
-            "bindable": True,
-            "metadata": {
-                "displayName": "Dummy Service",
-                "imageUrl": "https://example.com/logo.png",
-                "longDescription": "Ein OSB für Tests mit der GeoPlattform",
-                "providerDisplayName": "R. Freymann",
-                "documentationUrl": "https://example.com/docs",
-                "supportUrl": "https://example.com/support",
-                "eulaUrl": "https://example.com/eula"
-            },
-            "plans": [
-                {
-                    "name": "default",
-                    "id": "plan-0001",
-                    "description": "Standardplan",
-                    "metadata": {
-                        "displayName": "Standard"
-                    }
-                },
-                {
-                    "name": "groß",
-                    "id": "plan-0002",
-                    "description": "großer Plan",
-                    "metadata": {
-                        "displayName": "groß"
-                    },
-                    "schemas": common_schemas
-                },
-                {
-                    "name": "Spar-Abo",
-                    "id": "plan-0003",
-                    "description": "Spar-Abo",
-                    "metadata": {
-                        "displayName": "Spar-Abo"
-                    },
-                    "schemas": common_schemas
-                }
-            ]
-        }]
-    })
-
+def get_catalog():
+    return jsonify(catalog)
 
 @app.route('/v2/service_instances/<instance_id>/service_bindings/<binding_id>', methods=['PUT', 'DELETE'])
 @requires_auth
