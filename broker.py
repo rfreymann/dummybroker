@@ -29,7 +29,7 @@ def catalog():
             "name": "dummy-service",
             "id": "service-1234",
             "description": "Ein Dummy-Service für Tests",
-            "bindable": False,
+            "bindable": True,
             "metadata": {
                 "displayName": "Dummy Service",
                 "imageUrl": "https://example.com/logo.png",
