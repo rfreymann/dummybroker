@@ -38,7 +38,7 @@ def service_binding(instance_id, binding_id):
                 "token": f"token-{binding_id}",
                 "username": "demo",
                 "password": "demo123",
-                "notes": "Dies ist ein reines Dummy-Binding ohne echte Funktion."
+                "notes": "Blubb"
             }
         }), 201
 
