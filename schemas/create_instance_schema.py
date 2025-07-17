@@ -15,7 +15,7 @@ create_instance_schema = {
             "type": "string",
             "description": "Sicherheitscode (CVC) der Kreditkarte"
         },
-        "Name des Karteninhabers": {
+        "Name_des_Karteninhabers": {
             "type": "string",
             "description": "Name wie auf der Karte"
         }
