@@ -3,23 +3,23 @@ create_instance_schema = {
     "title": "Kreditkarteninformationen",
     "type": "object",
     "properties": {
-        "Kartennummer": {
+        "frei1": {
             "type": "string",
             "description": "Nummer der Kreditkarte, alle Dienstleister werden akzeptiert"
         },
-        "Ablaufdatum": {
+        "frei2": {
             "type": "string",
             "description": "Ablaufdatum im Format MM/JJ"
         },
-        "CVC": {
+        "frei3": {
             "type": "string",
             "description": "Sicherheitscode (CVC) der Kreditkarte"
         },
-        "Name_des_Karteninhabers": {
+        "frei4": {
             "type": "string",
             "description": "Name wie auf der Karte"
         }
     },
-    "required": ["Kartennummer", "Ablaufdatum", "CVC"],
+    "required": ["frei1", "frei2", "frei3"],
     "additionalProperties": False
 }
