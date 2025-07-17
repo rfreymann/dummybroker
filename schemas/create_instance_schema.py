@@ -20,6 +20,6 @@ create_instance_schema = {
             "description": "Name wie auf der Karte"
         }
     },
-    "required": ["frei1", "frei2", "frei3"],
+    "required": ["Kartennummer", "Ablaufdatum", "CVC"],
     "additionalProperties": False
 }
